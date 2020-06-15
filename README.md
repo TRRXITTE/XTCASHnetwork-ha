@@ -34,8 +34,8 @@ N/A
 You *must* copy ```traaittCASHd``` into the ```traaittcashd-ha``` folder for the easy start process to occur.
 
 ```bash
-git clone https://github.com/traaittplatform/traaittcash-highavailability.git highavailability
-cd highavailability
+git clone https://github.com/TRRXITTE/traaittcash.monitor.git traaittcashmonitor
+cd traaittcashmonitor
 cp <traaittCASHd> .
 sudo npm install & node service.js
 ```

@@ -34,7 +34,7 @@ N/A
 You *must* copy ```XTCASHnetwork``` into the ```traaittcashmonitor``` folder for the easy start process to occur.
 
 ```bash
-git clone https://github.com/TRRXITTE/traaittcash.monitor.git traaittcashmonitor
+git clone https://github.com/TRRXITTE/xtcashnetwork-ha.git traaittcashmonitor
 
 cd traaittcashmonitor
 cp <XTCASHnetwork> .
@@ -53,7 +53,7 @@ npm install -g pm2
 pm2 startup
 pm2 install pm2-logrotate
 
-pm2 start service.js --name traaittcashd
+pm2 start service.js --name xtcashnetwork
 pm2 save
 ```
 

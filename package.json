@@ -18,7 +18,7 @@
     "RPC",
     "websocket"
   ],
-  "author": "Brandon Lehmann <brandonlehmann@gmail.com>",
+  "author": "TRRXITTE Int., incorporate",
   "license": "AGPL-3.0",
   "dependencies": {
     "node-pty": "^0.8.1",
@@ -26,7 +26,7 @@
     "sha256": "^0.2.0",
     "shelljs": "^0.8.3",
     "socket.io": "^2.2.0",
-    "traaittcash-rpc": "^1.0.1"
+    "@trrxitte/traaittcash-rpc": "^2.0.3"
   },
   "devDependencies": {
     "standard": "^13.1.0"

@@ -1,4 +1,4 @@
-[![NPM](https://nodei.co/npm/xtcashnetwork-ha.png?downloads=true&stars=true)](https://nodei.co/npm/xtcashnetwork-ha/)
+[![NPM](https://nodei.co/npm/@trrxitte/xtcashnetwork-ha.png?downloads=true&stars=true)](https://nodei.co/npm/@trrxitte/xtcashnetwork-ha/)
 
 [![Build Status](https://travis-ci.org/brandonlehmann/turtlecoind-ha.png?branch=master)](https://travis-ci.org/brandonlehmann/turtlecoind-ha) [![Build Status](https://ci.appveyor.com/api/projects/status/github/brandonlehmann/turtlecoind-ha?branch=master&svg=true)](https://ci.appveyor.com/project/brandonlehmann/turtlecoind-ha/branch/master)
 

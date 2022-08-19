@@ -4,7 +4,7 @@
 
 'use strict'
 
-const traaittCASHd = require('./')
+const XTCASHnetwork = require('./')
 const util = require('util')
 
 const metrics = []
@@ -31,7 +31,7 @@ try {
   log('@pm2/io module not installed, ignoring...')
 }
 
-var daemon = new traaittCASHd({
+var daemon = new XTCASHnetwork({
   loadCheckpoints: './checkpoints.csv'
   // Load additional daemon parameters here
 })
@@ -47,7 +47,7 @@ function resetMetrics (metrics) {
 }
 
 daemon.on('start', (args) => {
-  log(util.format('traaittCASHd has started... %s', args))
+  log(util.format('XTCASHnetwork has started... %s', args))
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('starting')
@@ -55,7 +55,7 @@ daemon.on('start', (args) => {
 })
 
 daemon.on('started', () => {
-  log('traaittCASHd is attempting to synchronize with the network...')
+  log('XTCASHnetwork is attempting to synchronize with the network...')
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('started')
@@ -63,7 +63,7 @@ daemon.on('started', () => {
 })
 
 daemon.on('syncing', (info) => {
-  log(util.format('traaittCASHd has synchronized %s out of %s blocks [%s%]', info.height, info.network_height, info.percent))
+  log(util.format('XTCASHnetwork has synchronized %s out of %s blocks [%s%]', info.height, info.network_height, info.percent))
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('synchronizing')
@@ -72,7 +72,7 @@ daemon.on('syncing', (info) => {
 })
 
 daemon.on('synced', () => {
-  log('traaittCASHd is synchronized with the network...')
+  log('XTCASHnetwork is synchronized with the network...')
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('synchronized')
@@ -80,7 +80,7 @@ daemon.on('synced', () => {
 })
 
 daemon.on('ready', (info) => {
-  log(util.format('traaittCASHd is waiting for connections at %s @ %s - %s H/s', info.height, info.difficulty, info.globalHashRate))
+  log(util.format('XTCASHnetwork is waiting for connections at %s @ %s - %s H/s', info.height, info.difficulty, info.globalHashRate))
   if (metrics.length !== 0) {
     metrics[0].set('waiting for connections')
     metrics[2].set(info.height)
@@ -90,7 +90,7 @@ daemon.on('ready', (info) => {
 })
 
 daemon.on('desync', (daemon, network, deviance) => {
-  log(util.format('traaittCASHd is currently off the blockchain by %s blocks. Network: %s  Daemon: %s', deviance, network, daemon))
+  log(util.format('XTCASHnetwork is currently off the blockchain by %s blocks. Network: %s  Daemon: %s', deviance, network, daemon))
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('desynchronized')
@@ -99,7 +99,7 @@ daemon.on('desync', (daemon, network, deviance) => {
 })
 
 daemon.on('down', () => {
-  log('traaittCASHd is not responding... stopping process...')
+  log('XTCASHnetwork is not responding... stopping process...')
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('down')
@@ -108,7 +108,7 @@ daemon.on('down', () => {
 })
 
 daemon.on('stopped', (exitcode) => {
-  log(util.format('traaittCASHd has closed (exitcode: %s)... restarting process...', exitcode))
+  log(util.format('XTCASHnetwork has closed (exitcode: %s)... restarting process...', exitcode))
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set(`stopped (code: ${exitcode})`)

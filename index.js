@@ -4,7 +4,7 @@
 
 'use strict'
 
-const traaittCASHdRPC = require('traaittcash-rpc').traaittCASHd
+const traaittCASHRPC = require('traaittcash-rpc').XTCASHnetwork
 const WebSocket = require('./lib/websocket.js')
 const pty = require('node-pty')
 const util = require('util')
@@ -23,9 +23,9 @@ const daemonResponses = {
 }
 const blockTargetTime = 144
 
-const traaittCASHd = function (opts) {
+const XTCASHnetwork = function (opts) {
   opts = opts || {}
-  if (!(this instanceof traaittCASHd)) return new traaittCASHd(opts)
+  if (!(this instanceof XTCASHnetwork)) return new XTCASHnetwork(opts)
 
   /*
     This is NOT where you set your options at. If you're changing
@@ -42,10 +42,10 @@ const traaittCASHd = function (opts) {
   this.enableWebSocket = (typeof opts.enableWebSocket === 'undefined') ? false : opts.enableWebSocket
   this.webSocketPassword = opts.webSocketPassword || false
 
-  // Begin traaittCASHd options
-  this.path = opts.path || path.resolve(__dirname, './traaittCASHd' + ((os.platform() === 'win32') ? '.exe' : ''))
+  // Begin XTCASHnetwork options
+  this.path = opts.path || path.resolve(__dirname, './XTCASHnetwork' + ((os.platform() === 'win32') ? '.exe' : ''))
   this.dataDir = opts.dataDir || path.resolve(os.homedir(), './.traaittCASH')
-  this.logFile = opts.logFile || path.resolve(__dirname, './traaittCASHd.log')
+  this.logFile = opts.logFile || path.resolve(__dirname, './XTCASHnetwork.log')
   this.logLevel = opts.logLevel || 2
   this.enableCors = opts.enableCors || "*"
   this.enableBlockExplorer = (typeof opts.enableBlockExplorer === 'undefined') ? true : opts.enableBlockExplorer
@@ -122,9 +122,9 @@ const traaittCASHd = function (opts) {
     }
   })
 }
-inherits(traaittCASHd, EventEmitter)
+inherits(XTCASHnetwork, EventEmitter)
 
-traaittCASHd.prototype.start = function () {
+XTCASHnetwork.prototype.start = function () {
   var databaseLockfile = path.resolve(util.format('%s/DB/LOCK', this.dataDir))
   if (fs.existsSync(databaseLockfile)) {
     this.emit('error', 'Database LOCK file exists...')
@@ -218,7 +218,7 @@ traaittCASHd.prototype.start = function () {
   this.emit('start', util.format('%s%s', this.path, args.join(' ')))
 }
 
-traaittCASHd.prototype.stop = function () {
+XTCASHnetwork.prototype.stop = function () {
   // If we are currently running our checks, it's a good idea to stop them before we go kill the child process
   if (this.checkDaemon) {
     clearInterval(this.checkDaemon)
@@ -233,11 +233,11 @@ traaittCASHd.prototype.stop = function () {
   }, (this.timeout * 2))
 }
 
-traaittCASHd.prototype.write = function (data) {
+XTCASHnetwork.prototype.write = function (data) {
   this._write(util.format('%s\r', data))
 }
 
-traaittCASHd.prototype._checkChildStdio = function (data) {
+XTCASHnetwork.prototype._checkChildStdio = function (data) {
   if (data.indexOf(daemonResponses.started) !== -1) {
     this.emit('started')
   } else if (data.indexOf(daemonResponses.help) !== -1) {
@@ -253,7 +253,7 @@ traaittCASHd.prototype._checkChildStdio = function (data) {
   }
 }
 
-traaittCASHd.prototype._triggerDown = function () {
+XTCASHnetwork.prototype._triggerDown = function () {
   if (!this.firstCheckPassed) return
   if (!this.trigger) {
     this.trigger = setTimeout(() => {
@@ -262,7 +262,7 @@ traaittCASHd.prototype._triggerDown = function () {
   }
 }
 
-traaittCASHd.prototype._triggerUp = function () {
+XTCASHnetwork.prototype._triggerUp = function () {
   if (!this.firstCheckPassed) this.firstCheckPassed = true
   if (this.trigger) {
     clearTimeout(this.trigger)
@@ -270,7 +270,7 @@ traaittCASHd.prototype._triggerUp = function () {
   }
 }
 
-traaittCASHd.prototype._checkServices = function () {
+XTCASHnetwork.prototype._checkServices = function () {
   if (!this.synced) {
     this.synced = true
     this.checkDaemon = setInterval(() => {
@@ -304,7 +304,7 @@ traaittCASHd.prototype._checkServices = function () {
   }
 }
 
-traaittCASHd.prototype._checkRpc = function () {
+XTCASHnetwork.prototype._checkRpc = function () {
   return Promise.all([
     this.api.info(),
     this.api.height()
@@ -318,7 +318,7 @@ traaittCASHd.prototype._checkRpc = function () {
     }).catch(err => { throw new Error(util.format('Daemon is not passing checks...: %s', err)) })
 }
 
-traaittCASHd.prototype._checkDaemon = function () {
+XTCASHnetwork.prototype._checkDaemon = function () {
   return new Promise((resolve, reject) => {
     this.help = false
     this.write('help')
@@ -329,11 +329,11 @@ traaittCASHd.prototype._checkDaemon = function () {
   })
 }
 
-traaittCASHd.prototype._write = function (data) {
+XTCASHnetwork.prototype._write = function (data) {
   this.child.write(data)
 }
 
-traaittCASHd.prototype._buildargs = function () {
+XTCASHnetwork.prototype._buildargs = function () {
   var args = ''
   if (this.dataDir) args = util.format('%s --data-dir %s', args, this.dataDir)
   if (this.logFile) args = util.format('%s --log-file %s', args, this.logFile)
@@ -385,7 +385,7 @@ traaittCASHd.prototype._buildargs = function () {
   return args.split(' ')
 }
 
-traaittCASHd.prototype._setupAPI = function () {
+XTCASHnetwork.prototype._setupAPI = function () {
   this.api = new traaittCASHdRPC({
     host: this.rpcBindIp,
     port: this.rpcBindPort,
@@ -393,7 +393,7 @@ traaittCASHd.prototype._setupAPI = function () {
   })
 }
 
-traaittCASHd.prototype._setupWebSocket = function () {
+XTCASHnetwork.prototype._setupWebSocket = function () {
   if (this.enableWebSocket) {
     this.webSocket = new WebSocket({
       port: (this.rpcBindPort + 1),
@@ -491,7 +491,7 @@ traaittCASHd.prototype._setupWebSocket = function () {
   }
 }
 
-traaittCASHd.prototype._registerWebSocketClientEvents = function (socket) {
+XTCASHnetwork.prototype._registerWebSocketClientEvents = function (socket) {
   var that = this
   var events = Object.getPrototypeOf(this.api)
   events = Object.getOwnPropertyNames(events).filter((f) => {
@@ -532,4 +532,4 @@ function precisionRound (number, precision) {
   return Math.round(number * factor) / factor
 }
 
-module.exports = traaittCASHd
+module.exports = XTCASHnetwork

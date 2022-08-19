@@ -1,5 +1,5 @@
 {
-  "name": "traaittcash.monitor",
+  "name": "xtcashnetwork-ha",
   "version": "0.14.2",
   "description": "Wraps the traaittcash Daemon and helps keep the daemon synchronized and ready for connections.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brandonlehmann/turtlecoind-ha.git"
+    "url": "git+https://github.com/trrxitte/xtcashnetwork-ha.git"
   },
   "keywords": [
     "traaittcash",

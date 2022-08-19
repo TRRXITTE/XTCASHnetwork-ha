@@ -1,10 +1,10 @@
-[![NPM](https://nodei.co/npm/traaittcashd-ha.png?downloads=true&stars=true)](https://nodei.co/npm/traaittcashd-ha/)
+[![NPM](https://nodei.co/npm/xtcashnetwork-ha.png?downloads=true&stars=true)](https://nodei.co/npm/xtcashnetwork-ha/)
 
 [![Build Status](https://travis-ci.org/brandonlehmann/turtlecoind-ha.png?branch=master)](https://travis-ci.org/brandonlehmann/turtlecoind-ha) [![Build Status](https://ci.appveyor.com/api/projects/status/github/brandonlehmann/turtlecoind-ha?branch=master&svg=true)](https://ci.appveyor.com/project/brandonlehmann/turtlecoind-ha/branch/master)
 
-# traaittCASH.monitor High-Availability Daemon Wrapper
+# traaittCASH High-Availability Daemon Wrapper
 
-This project is designed to wrap the TurtleCoind daemon on a *nix system and monitor it for hangups, locks, fork, or other events that cause the daemon to stop responding to requests in an accurate manner.
+This project is designed to wrap the XTCASHnetwork daemon on a *nix system and monitor it for hangups, locks, fork, or other events that cause the daemon to stop responding to requests in an accurate manner.
 
 The sample **service.js** includes how to automatically restart the daemon if it hangs, locks, or otherwise stops responding.
 
@@ -17,7 +17,7 @@ The sample **service.js** includes how to automatically restart the daemon if it
 5. [Documentation](#documentation)
    1. [Methods](#methods)
    2. [Events](#events)
-   3. [TurtleCoind RPC API Interface](#turtlecoind-rpc-api-interface)
+   3. [XTCASHnetwork RPC API Interface](#xtcashnetwork-rpc-api-interface)
    4. [WebSocket Connections](#websocket-connections)
 
 ## To Do
@@ -27,20 +27,21 @@ N/A
 ## Dependencies
 
 * [NodeJS v8.x](https://nodejs.org/)
-* [traaittCASHd](https://github.com/traaittplatform/traaittcash/releases) v0.8.4 or higher
+* [XTCASHnetwork](https://github.com/trrxitte/traaittcash/releases) v1.4.4 
 
 ## Easy Start
 
-You *must* copy ```traaittCASHd``` into the ```traaittcashd-ha``` folder for the easy start process to occur.
+You *must* copy ```XTCASHnetwork``` into the ```traaittcashmonitor``` folder for the easy start process to occur.
 
 ```bash
 git clone https://github.com/TRRXITTE/traaittcash.monitor.git traaittcashmonitor
+
 cd traaittcashmonitor
-cp <traaittCASHd> .
+cp <XTCASHnetwork> .
 sudo npm install & node service.js
 ```
 
-**It is highly recommended that you use [checkpoints](https://github.com/traaittcash/traaittcash/wiki/Using-checkpoints) when starting fresh or you'll need to wait a while for the sync to occur.**
+**It is highly recommended that you use [checkpoints](https://documentation.trrxitte.com/guides/wallets/Using-Checkpoints/) when starting fresh or you'll need to wait a while for the sync to occur.**
 
 ## Keep it Running
 
@@ -60,11 +61,11 @@ pm2 save
 
 ### Initialization
 
-Practically all traaittCASHd command line arguments are exposed in the constructor method. Simply include them in your list of options to get activate or use them. Default values are defined below.
+Practically all XTCASHnetwork command line arguments are exposed in the constructor method. Simply include them in your list of options to get activate or use them. Default values are defined below.
 
 ```javascript
-var daemon = new traaittCASHd({
-  // These are our traaittCASHd-ha options
+var daemon = new XTCASHnetwork({
+  // These are our XTCASHnetwork-ha options
   pollingInterval: 10000, // How often to check the daemon in milliseconds
   maxPollingFailures: 3, // How many polling intervals can fail before we emit a down event?
   checkHeight: true, // Check the daemon block height against known trusted nodes
@@ -76,7 +77,7 @@ var daemon = new traaittCASHd({
   webSocketPassword: false, // Set this to a password to use for the privileged socket events.
 
   // These are the standard TurtleCoind options
-  path: './traaittCASHd', // Where can I find TurtleCoind?
+  path: './XTCASHnetwork', // Where can I find TurtleCoind?
   dataDir: '~/.traaittCASH', // Where do you store your blockchain?
   testnet: false, // Use the testnet?
   enableCors: false, // Enable CORS support for the domain in this value

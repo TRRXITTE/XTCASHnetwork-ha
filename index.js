@@ -4,7 +4,7 @@
 
 'use strict'
 
-const traaittCASHRPC = require('traaittcash-rpc').XTCASHnetwork
+const traaittCASHRPC = require('@trrxitte/traaittcash-rpc').XTCASHnetwork
 const WebSocket = require('./lib/websocket.js')
 const pty = require('node-pty')
 const util = require('util')
@@ -386,7 +386,7 @@ XTCASHnetwork.prototype._buildargs = function () {
 }
 
 XTCASHnetwork.prototype._setupAPI = function () {
-  this.api = new traaittCASHdRPC({
+  this.api = new traaittCASHRPC({
     host: this.rpcBindIp,
     port: this.rpcBindPort,
     timeout: this.timeout

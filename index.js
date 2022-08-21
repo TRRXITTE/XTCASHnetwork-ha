@@ -150,7 +150,7 @@ XTCASHnetwork.prototype.start = function () {
       return false
     }
   }
-  this.emit('info', 'Attempting to start traaittcashd-ha...')
+  this.emit('info', 'Attempting to start XTCASHnetwork-ha...')
   if (!fs.existsSync(this.path)) {
     this.emit('error', '************************************************')
     this.emit('error', util.format('%s could not be found', this.path))

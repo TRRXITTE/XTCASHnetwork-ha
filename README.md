@@ -20,10 +20,6 @@ The sample **service.js** includes how to automatically restart the daemon if it
    3. [XTCASHnetwork RPC API Interface](#xtcashnetwork-rpc-api-interface)
    4. [WebSocket Connections](#websocket-connections)
 
-## To Do
-
-N/A
-
 ## Dependencies
 
 * [NodeJS v8.x](https://nodejs.org/)
@@ -31,14 +27,14 @@ N/A
 
 ## Easy Start
 
-You *must* copy ```XTCASHnetwork``` into the ```traaittcashmonitor``` folder for the easy start process to occur.
+You *must* copy ```XTCASHnetwork``` into the ```XTCASHnetwork-ha``` folder for the easy start process to occur.
 
 ```bash
-git clone https://github.com/TRRXITTE/xtcashnetwork-ha.git traaittcashmonitor
-
-cd traaittcashmonitor
+git clone https://github.com/TRRXITTE/XTCASHnetwork-ha.git
+cd XTCASHnetwork-ha
 cp <XTCASHnetwork> .
-sudo npm install & node service.js
+npm install 
+node service.js
 ```
 
 **It is highly recommended that you use [checkpoints](https://documentation.trrxitte.com/guides/wallets/Using-Checkpoints/) when starting fresh or you'll need to wait a while for the sync to occur.**

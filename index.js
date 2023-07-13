@@ -58,7 +58,7 @@ const XTCASHnetwork = function (opts) {
   this.p2pExternalPort = opts.p2pExternalPort || false
   this.allowLocalIp = (typeof opts.allowLocalIp === 'undefined') ? false : opts.allowLocalIp
   this.peers = opts.peers || false
-  this.priorityNodes = opts.priorityNodes || false
+  this.priorityNodes = opts.priorityNodes || true
   this.exclusiveNodes = opts.exclusiveNodes || false
   this.seedNode = opts.seedNode || false
   this.hideMyPort = (typeof opts.hideMyPort === 'undefined') ? false : opts.hideMyPort

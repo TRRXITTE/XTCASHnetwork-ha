@@ -21,7 +21,7 @@ const daemonResponses = {
   help: 'Show this help',
   block: 'New Top Block Detected:'
 }
-const blockTargetTime = 144
+const blockTargetTime = 32
 
 const XTCASHnetwork = function (opts) {
   opts = opts || {}

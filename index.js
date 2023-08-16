@@ -17,7 +17,7 @@ const shelljs = require('shelljs')
 const nonce = require('nonce')()
 
 const daemonResponses = {
-  started: 'P2P server initialized OK',
+  started: 'P2P server initialized.',
   help: 'Show this help',
   block: 'current height added:'
 }

@@ -80,7 +80,7 @@ var daemon = new XTCASHnetwork({
   enableBlockExplorer: true, // Enable the block explorer
   loadCheckpoints: false, // If set to a path to a file, will supply that file to the daemon if it exists.
   rpcBindIp: '0.0.0.0', // What IP to bind the RPC server to
-  rpcBindPort: 14486, // What Port to bind the RPC server to
+  rpcBindPort: 14478, // What Port to bind the RPC server to
   p2pBindIp: '0.0.0.0', // What IP to bind the P2P network to
   p2pBindPort: 14487, // What Port to bind the P2P network to
   p2pExternalPort: 0, // What External Port to bind the P2P network to for those behind NAT

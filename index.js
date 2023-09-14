@@ -52,9 +52,9 @@ const XTCASHnetwork = function (opts) {
   this.enableBlockExplorerDetailed = (typeof opts.enableBlockExplorerDetailed === 'undefined') ? true : opts.enableBlockExplorerDetailed
   this.loadCheckpoints = opts.loadCheckpoints || false
   this.rpcBindIp = opts.rpcBindIp || '0.0.0.0'
-  this.rpcBindPort = opts.rpcBindPort || 14478
+  this.rpcBindPort = opts.rpcBindPort || 14423
   this.p2pBindIp = opts.p2pBindIp || false
-  this.p2pBindPort = opts.p2pBindPort || 14486
+  this.p2pBindPort = opts.p2pBindPort || 14487
   this.p2pExternalPort = opts.p2pExternalPort || false
   this.allowLocalIp = (typeof opts.allowLocalIp === 'undefined') ? false : opts.allowLocalIp
   this.peers = opts.peers || false
